@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Strict Design System Palette (Light Mode) */
+  --primary: #CDB4DB; /* Soft Lavender */
+  --secondary: #A2D2FF; /* Muted Blue */
+  --background: #F8F9FA; /* Off White */
+  --accent: #FFC8DD; /* Blush Pink */
+  --card-bg: #FFFFFF;
+  
+  /* Risk Indicators */
+  --risk-low: #BDE0A8; /* Soft Green */
+  --risk-medium: #FFE066; /* Warm Yellow */
+  --risk-high: #FF6B6B; /* Soft Coral */
+
+  /* Text Colors */
+  --text-main: #4A4E69; 
+  --text-light: #9CA3AF;
+  
+  /* UI Effects */
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.05);
+  --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.08);
+  --radius: 16px;
+  --transition: 0.3s ease;
+}
+
+[data-theme='dark'] {
+  --background: #12121A; /* Deep dark background */
+  --card-bg: #1C1C28; /* Slightly lighter card background */
+  
+  --primary: #B794F4; /* Brighter lavender for contrast */
+  --secondary: #63B3ED; /* Brighter blue for contrast */
+  --accent: #F687B3; /* Brighter pink */
+  
+  --text-main: #F7FAFC; /* White-ish text */
+  --text-light: #A0AEC0; /* Grey text */
+  
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.6);
+  
+  /* Adjust risk colors for dark mode readability */
+  --risk-low: #68D391;
+  --risk-medium: #F6E05E;
+  --risk-high: #FC8181;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Outfit', sans-serif;
+  transition: background-color var(--transition), color var(--transition), box-shadow var(--transition), border-color var(--transition), transform var(--transition);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text-main);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Layout */
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--text-light);
+  font-weight: 500;
+  position: relative;
+  font-size: 1.1rem;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--primary);
+}
+
+/* Buttons */
+.btn {
+  padding: 1rem 2rem;
+  border-radius: var(--radius);
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  box-shadow: var(--shadow-soft);
+}
+
+.btn:hover {
+  transform: scale(1.02);
+  box-shadow: var(--shadow-hover);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: #12121A; /* Dark text on buttons for contrast in dark mode too */
+}
+
+[data-theme='light'] .btn-primary {
+  color: white;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--text-main);
+  border: 2px solid rgba(156, 163, 175, 0.3);
+}
+.btn-secondary:hover {
+  border-color: var(--primary);
+}
+
+/* Forms & Inputs */
+.input-field {
+  width: 100%;
+  padding: 1.2rem;
+  border-radius: var(--radius);
+  border: 1px solid rgba(156, 163, 175, 0.2);
+  background: var(--background);
+  color: var(--text-main);
+  font-size: 1.1rem;
+  outline: none;
+}
+
+.input-field:focus {
+  border-color: var(--primary);
+  background: var(--card-bg);
+  box-shadow: 0 0 0 3px rgba(205, 180, 219, 0.2);
+}
+
+textarea.input-field {
+  resize: vertical;
+  min-height: 200px;
+}
+
+/* Cards */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  padding: 2rem;
+}
+
+/* Utilities */
+.fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h1, h2, h3 {
+  color: var(--text-main);
+  line-height: 1.3;
+}
+
+p {
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+/* Risk Badges */
+.badge {
+  padding: 0.5rem 1rem;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: inline-block;
+}
+
+.badge-low { background-color: var(--risk-low); color: #12121A; }
+.badge-medium { background-color: var(--risk-medium); color: #12121A; }
+.badge-high { background-color: var(--risk-high); color: #12121A; }
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+  .app-container {
+    padding: 1rem;
+  }
+}
