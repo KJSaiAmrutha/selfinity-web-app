@@ -21,18 +21,7 @@ Selfinity is a privacy-first, full-stack AI application designed to detect early
 - CORS, Dotenv
 
 **Architecture Diagram**:
-```mermaid
-graph TD
-    A[Student (Frontend UI)] -->|Anonymous Interaction| B[React Single Page App]
-    B -->|Journal Text| C(Node.js Backend /api/analyze)
-    B -->|Chat Messages| D(Node.js Backend /api/chat)
-    C <-->|Prompt + Text| E((Google Gemini API))
-    D <-->|Prompt + History| E
-    E -->|JSON Sentiment & Scores| C
-    E -->|Empathetic Reply| D
-    C -->|Wellness Data| B
-    D -->|AI Response| B
-```
+
 
 ## Setup Instructions
 
@@ -55,6 +44,8 @@ graph TD
 - Go to `http://localhost:5173`
 - Start Journaling or Talk to the AI Chatbot.
 
+
+
 ## Key Features
 - **AI-Based Behavioral Detection**: Uses Gemini to analyze sentiment, risk level, and output a wellness score from journal entries.
 - **Anonymous Chatbot**: Provides a safe space with guided prompts and coping strategies.
@@ -63,4 +54,6 @@ graph TD
 - **Premium UI**: Designed with aesthetic, Gen-Z friendly pastel colors and a smooth, interactive glassmorphism layout.
 
 ## Live Demo
-*Deploy Frontend to Vercel/Firebase and Backend to Render/Cloud Run to get a live URL.*
+https://selfinity-web-app.vercel.app/login
+Video Demo :
+https://drive.google.com/drive/folders/1osAMvrpjfsy0zq2Pfc0xi8AGS-7r1Mmd?usp=drive_link
